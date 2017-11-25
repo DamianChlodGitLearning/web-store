@@ -21,7 +21,7 @@ public class User {
 
 	private int userId;
 
-	private String name;
+	private String userName;
 
 	private String password;
 
@@ -49,13 +49,13 @@ public class User {
 		this.userId = userId;
 	}
 
-	@Column(name = "NAME", nullable = false, length = 45)
-	public String getName() {
-		return name;
+	@Column(name = "USER_NAME", nullable = false, length = 45)
+	public String getUserName() {
+		return userName;
 	}
 
-	public void setName(String name) {
-		this.name = name;
+	public void setUserName(String name) {
+		this.userName = name;
 	}
 
 	@Column(name = "PASSWORD", nullable = false, length = 45)
@@ -132,7 +132,7 @@ public class User {
 		result = prime * result + ((firstName == null) ? 0 : firstName.hashCode());
 		result = prime * result + ((lastName == null) ? 0 : lastName.hashCode());
 		result = prime * result + (locked ? 1231 : 1237);
-		result = prime * result + ((name == null) ? 0 : name.hashCode());
+		result = prime * result + ((userName == null) ? 0 : userName.hashCode());
 		result = prime * result + ((password == null) ? 0 : password.hashCode());
 		result = prime * result + userId;
 		return result;
@@ -166,10 +166,10 @@ public class User {
 			return false;
 		if (locked != other.locked)
 			return false;
-		if (name == null) {
-			if (other.name != null)
+		if (userName == null) {
+			if (other.userName != null)
 				return false;
-		} else if (!name.equals(other.name))
+		} else if (!userName.equals(other.userName))
 			return false;
 		if (password == null) {
 			if (other.password != null)
@@ -183,7 +183,7 @@ public class User {
 
 	@Override
 	public String toString() {
-		return "User [userId=" + userId + ", name=" + name + ", password=" + password + ", firstName=" + firstName
+		return "User [userId=" + userId + ", userName=" + userName + ", password=" + password + ", firstName=" + firstName
 				+ ", lastName=" + lastName + ", birthdate=" + birthdate + ", enabled=" + enabled + ", locked=" + locked
 				+ "]";
 	}

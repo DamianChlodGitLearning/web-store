@@ -29,7 +29,7 @@
 					<strong>User ID: </strong>${user.userId}
 				</p>
 				<p>
-					<strong>Name</strong>: ${user.name}
+					<strong>Name</strong>: ${user.userName}
 				</p>
 				<p>
 					<strong>First name: </strong>${user.firstName}
