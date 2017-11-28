@@ -35,7 +35,7 @@ public class User {
 
 	private boolean locked;
 
-	private Set<Role> roleList = new HashSet<Role>(0);
+	private Set<Role> roleSet = new HashSet<Role>(0);
 
 	@Id
 	@Column(name = "USER_ID", nullable = false)
@@ -115,12 +115,12 @@ public class User {
 	@JoinTable(name = "USER_ROLE_MATCH_TABLE", joinColumns = {
 			@JoinColumn(name = "USER_ID", nullable = false, updatable = false) }, inverseJoinColumns = {
 					@JoinColumn(name = "ROLE_ID", nullable = false, updatable = false) })
-	public Set<Role> getRoleList() {
-		return roleList;
+	public Set<Role> getRoleSet() {
+		return roleSet;
 	}
 
-	public void setRoleList(Set<Role> roleList) {
-		this.roleList = roleList;
+	public void setRoleSet(Set<Role> roleSet) {
+		this.roleSet = roleSet;
 	}
 
 	@Override
@@ -183,9 +183,9 @@ public class User {
 
 	@Override
 	public String toString() {
-		return "User [userId=" + userId + ", userName=" + userName + ", password=" + password + ", firstName=" + firstName
-				+ ", lastName=" + lastName + ", birthdate=" + birthdate + ", enabled=" + enabled + ", locked=" + locked
-				+ "]";
+		return "User [userId=" + userId + ", userName=" + userName + ", password=" + password + ", firstName="
+				+ firstName + ", lastName=" + lastName + ", birthdate=" + birthdate + ", enabled=" + enabled
+				+ ", locked=" + locked + "]";
 	}
 
 }

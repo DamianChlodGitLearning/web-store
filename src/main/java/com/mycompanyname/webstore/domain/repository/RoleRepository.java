@@ -10,7 +10,7 @@ import com.mycompanyname.webstore.domain.Role;
 
 public interface RoleRepository extends CrudRepository<Role, Long> {
 
-	@Query("select r from Role r join r.userList u where u.userId= :userId")
+	@Query("select r from Role r join r.userSet u where u.userId= :userId")
 	List<Role> findRolesByUserId(@Param("userId") int userId);
 	
 }

@@ -1,9 +1,7 @@
 package com.mycompanyname.webstore.controller;
 
 import java.io.File;
-
 import javax.servlet.http.HttpServletRequest;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -17,6 +15,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 import com.mycompanyname.webstore.domain.Product;
+import com.mycompanyname.webstore.service.CategoryService;
+import com.mycompanyname.webstore.service.ManufacturerService;
 import com.mycompanyname.webstore.service.ProductService;
 
 @Controller
@@ -25,7 +25,11 @@ public class ProductController {
 
 	@Autowired
 	private ProductService productService;
-	
+	@Autowired
+	private CategoryService categoryService;
+	@Autowired
+	private ManufacturerService manufacturerService;
+
 	@RequestMapping
 	public String list(Model model) {
 		model.addAttribute("products", productService.findAll());
@@ -34,7 +38,13 @@ public class ProductController {
 
 	@RequestMapping("/product")
 	public String getProductById(Model model, @RequestParam("id") int productId) {
-		model.addAttribute("product", productService.findByProductId(productId));
+
+		model.addAttribute("product",
+				productService.findProductCategoryandManufacturerByProductId(productId).get(0)[0]);
+		model.addAttribute("category",
+				productService.findProductCategoryandManufacturerByProductId(productId).get(0)[1]);
+		model.addAttribute("manufacturer",
+				productService.findProductCategoryandManufacturerByProductId(productId).get(0)[2]);
 		return "product";
 	}
 
@@ -42,6 +52,9 @@ public class ProductController {
 	public String getAddNewProductForm(Model model) {
 		Product newProduct = new Product();
 		model.addAttribute("newProduct", newProduct);
+		model.addAttribute("categorySet", categoryService.findAll());
+		model.addAttribute("manufacturerSet", manufacturerService.findAll());
+
 		return "addProduct";
 	}
 
@@ -51,9 +64,12 @@ public class ProductController {
 		String[] suppressedFields = result.getSuppressedFields();
 		if (suppressedFields.length > 0) {
 			throw new RuntimeException(
-					"PrÃ³ba wiÄ…zania niedozwolonych pÃ³l:" + StringUtils.arrayToCommaDelimitedString(suppressedFields));
+					"Próba wi¹zania niedozwolonych pól:" + StringUtils.arrayToCommaDelimitedString(suppressedFields));
 		}
 
+		newProduct.setCategory(categoryService.findByCategoryId(newProduct.getCategory().getCategoryId()));
+		newProduct.setManufacturer(
+				manufacturerService.findByManufacturerId(newProduct.getManufacturer().getManufacturerId()));
 		newProduct.setUnitsInOrder(0);
 		newProduct.setDiscontinued(false);
 		Product savedProduct = productService.save(newProduct);
@@ -65,7 +81,7 @@ public class ProductController {
 				productImage.transferTo(
 						new File(rootDirectory + "resources\\images\\" + savedProduct.getProductId() + ".png"));
 			} catch (Exception e) {
-				throw new RuntimeException("Niepowodzenie podczas prÃ³by zapisu obrazka produktu", e);
+				throw new RuntimeException("Niepowodzenie podczas próby zapisu obrazka produktu", e);
 			}
 		}
 

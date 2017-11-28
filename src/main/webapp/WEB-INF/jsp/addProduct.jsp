@@ -25,14 +25,7 @@
 			enctype="multipart/form-data">
 			<fieldset>
 				<legend>Dodaj nowy produkt</legend>
-				<div class="form-group">
-					<label class="control-label col-lg-2 col-lg-2" for="productId"><spring:message
-							code="addProduct.form.productId.label" /></label>
-					<div class="col-lg-10">
-						<form:input id="productId" path="productId" type="text"
-							class="form:input-large" />
-					</div>
-				</div>
+
 				<div class="form-group">
 					<label class="control-label col-lg-2 col-lg-2" for="name">Nazwa</label>
 					<div class="col-lg-10">
@@ -53,20 +46,7 @@
 						<form:textarea id="description" path="description" rows="2" />
 					</div>
 				</div>
-				<div class="form-group">
-					<label class="control-label col-lg-2 col-lg-2" for="manufacturer">Producent</label>
-					<div class="col-lg-10">
-						<form:input id="manufacturer" path="manufacturer" type="text"
-							class="form:input-large" />
-					</div>
-				</div>
-				<div class="form-group">
-					<label class="control-label col-lg-2 col-lg-2" for="category">Kategoria</label>
-					<div class="col-lg-10">
-						<form:input id="category" path="category" type="text"
-							class="form:input-large" />
-					</div>
-				</div>
+
 				<div class="form-group">
 					<label class="control-label col-lg-2 col-lg-2" for="unitsInStock">Liczba
 						dostępnych sztuk</label>
@@ -75,6 +55,18 @@
 							class="form:input-large" />
 					</div>
 				</div>
+				<div class="form-group">
+					<label class="control-label col-lg-2 col-lg-2" for="unitsInStock">Kategoria</label>
+					<form:select path="category.categoryId" items="${categorySet}"
+						itemLabel="name" itemValue="categoryId" />
+				</div>
+				<div class="form-group">
+					<label class="control-label col-lg-2 col-lg-2" for="unitsInStock">Producent</label>
+					<form:select path="manufacturer.manufacturerId"
+						items="${manufacturerSet}" itemLabel="name"
+						itemValue="manufacturerId" />
+				</div>
+
 				<%-- 				<div class="form-group">
 					<label class="control-label col-lg-2 col-lg-2" for="productId">Liczba
 						zamawianych sztuk</label>

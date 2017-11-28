@@ -4,7 +4,6 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import com.mycompanyname.webstore.domain.Product;
 import com.mycompanyname.webstore.domain.repository.ProductRepository;
 import com.mycompanyname.webstore.service.ProductService;
@@ -21,11 +20,6 @@ public class ProductServiceImpl implements ProductService {
 	}
 
 	@Override
-	public Product findByProductId(int ProductId) {
-		return this.productRepository.findByProductId(ProductId);
-	}
-
-	@Override
 	public List<Product> findAll() {
 		return this.productRepository.findAll();
 	}
@@ -33,6 +27,11 @@ public class ProductServiceImpl implements ProductService {
 	@Override
 	public Product save(Product newProduct) {
 		return this.productRepository.save(newProduct);
+	}
+
+	@Override
+	public List<Object[]> findProductCategoryandManufacturerByProductId(int productId) {
+		return productRepository.findProductCategoryandManufacturerByProductId(productId);
 	}
 
 }

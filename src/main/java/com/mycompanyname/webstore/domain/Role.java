@@ -20,17 +20,17 @@ public class Role {
 
 	private String name;
 
-	private Set<User> userList = new HashSet<User>(0);
+	private Set<User> userSet = new HashSet<User>(0);
 
 	@Id
 	@Column(name = "ROLE_ID", nullable = false)
 	@GeneratedValue(generator = "usersGroupTable_seq")
 	@SequenceGenerator(name = "usersGroupTable_seq", sequenceName = "USERSGROUPTABLE_SEQ", allocationSize = 1)
-	public int getUsersGroupId() {
+	public int getRoleId() {
 		return roleId;
 	}
 
-	public void setUsersGroupId(int roleId) {
+	public void setRoleId(int roleId) {
 		this.roleId = roleId;
 	}
 
@@ -43,13 +43,13 @@ public class Role {
 		this.name = name;
 	}
 
-	@ManyToMany(fetch = FetchType.LAZY, mappedBy = "roleList")
-	public Set<User> getUserList() {
-		return userList;
+	@ManyToMany(fetch = FetchType.LAZY, mappedBy = "roleSet")
+	public Set<User> getUserSet() {
+		return userSet;
 	}
 
-	public void setUserList(Set<User> userList) {
-		this.userList = userList;
+	public void setUserSet(Set<User> userSet) {
+		this.userSet = userSet;
 	}
 
 	@Override
@@ -85,5 +85,4 @@ public class Role {
 		return "Role [roleId=" + roleId + ", name=" + name + "]";
 	}
 
-	
 }

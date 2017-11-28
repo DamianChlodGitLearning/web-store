@@ -1,4 +1,4 @@
-<%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <%@page pageEncoding="UTF-8" contentType="text/html; charset=UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <html>
@@ -19,27 +19,28 @@
 	<section class="container">
 		<div class="row">
 			<div class="col-md-5">
-				<img src="<c:url value="/resource/images/${product.productId}.png"></c:url>" alt="image" style = "width:100%" />
+				<img
+					src="<c:url value="/resource/images/${product.productId}.png"></c:url>"
+					alt="image" style="width: 100%" />
 				<h3>${product.name}</h3>
 				<p>${product.description}</p>
 				<p>
 					<strong>Kod produktu: </strong><span class="label label-warning">${product.productId}</span>
 				</p>
 				<p>
-					<strong>Producent</strong>: ${product.manufacturer}
+					<strong>Producent</strong>: ${manufacturer.name}
 				</p>
 				<p>
-					<strong>Kategoria</strong>: ${product.category}
+					<strong>Kategoria</strong>: ${category.name}
 				</p>
 				<p>
 					<strong>Dostępna liczba sztuk</strong>:${product.unitsInStock}
 				</p>
 				<h4>${product.unitPrice}PLN</h4>
 				<p>
-				<a href="<spring:url value="/products" />" class="btn btndefault">
-					<span class="glyphicon-hand-left glyphicon"></span> Wstecz
-				</a>
-					<a href="#" class="btn btn-warning btn-large"> <span
+					<a href="<spring:url value="/products" />" class="btn btndefault">
+						<span class="glyphicon-hand-left glyphicon"></span> Wstecz
+					</a> <a href="#" class="btn btn-warning btn-large"> <span
 						class="glyphicon-shopping-cart glyphicon"></span> Zamów teraz
 					</a>
 			</div>
