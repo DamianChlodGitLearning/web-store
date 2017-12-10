@@ -13,7 +13,7 @@ import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "ROLE_TABLE")
+@Table(name = "ROLE")
 public class Role {
 
 	private int roleId;

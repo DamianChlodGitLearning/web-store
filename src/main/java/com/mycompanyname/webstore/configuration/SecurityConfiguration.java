@@ -38,7 +38,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 		auth.jdbcAuthentication().dataSource(dataSource)
 				.usersByUsernameQuery("SELECT user_name as username, password, enabled from USER_TABLE where user_name=?")
 				.authoritiesByUsernameQuery(
-						"SELECT ut.USER_NAME as username, rt.NAME as role FROM ROLE_TABLE rt JOIN USER_ROLE_MATCH_TABLE urmt ON rt.ROLE_ID = urmt.ROLE_ID JOIN USER_TABLE ut ON urmt.USER_ID = ut.USER_ID WHERE ut.USER_NAME = ?");
+						"SELECT ut.USER_NAME as username, r.NAME as role FROM ROLE r JOIN USER_ROLE ur ON r.ROLE_ID = ur.ROLE_ID JOIN USER_TABLE ut ON ur.USER_ID = ut.USER_ID WHERE ut.USER_NAME = ?");
 	}
 
 	protected void configure(HttpSecurity http) throws Exception {

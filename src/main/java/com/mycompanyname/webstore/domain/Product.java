@@ -14,7 +14,7 @@ import javax.persistence.Transient;
 import org.springframework.web.multipart.MultipartFile;
 
 @Entity
-@Table(name = "PRODUCT_TABLE")
+@Table(name = "PRODUCT")
 public class Product {
 
 	private int productId;

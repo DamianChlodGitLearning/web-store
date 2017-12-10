@@ -112,7 +112,7 @@ public class User {
 	}
 
 	@ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-	@JoinTable(name = "USER_ROLE_MATCH_TABLE", joinColumns = {
+	@JoinTable(name = "USER_ROLE", joinColumns = {
 			@JoinColumn(name = "USER_ID", nullable = false, updatable = false) }, inverseJoinColumns = {
 					@JoinColumn(name = "ROLE_ID", nullable = false, updatable = false) })
 	public Set<Role> getRoleSet() {
