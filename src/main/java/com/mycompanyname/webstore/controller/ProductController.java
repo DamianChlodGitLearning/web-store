@@ -64,7 +64,7 @@ public class ProductController {
 		String[] suppressedFields = result.getSuppressedFields();
 		if (suppressedFields.length > 0) {
 			throw new RuntimeException(
-					"Próba wi¹zania niedozwolonych pól:" + StringUtils.arrayToCommaDelimitedString(suppressedFields));
+					"PrÃ³ba wiÄ…zania niedozwolonych pÃ³l:" + StringUtils.arrayToCommaDelimitedString(suppressedFields));
 		}
 
 		newProduct.setCategory(categoryService.findByCategoryId(newProduct.getCategory().getCategoryId()));
@@ -81,7 +81,7 @@ public class ProductController {
 				productImage.transferTo(
 						new File(rootDirectory + "resources\\images\\" + savedProduct.getProductId() + ".png"));
 			} catch (Exception e) {
-				throw new RuntimeException("Niepowodzenie podczas próby zapisu obrazka produktu", e);
+				throw new RuntimeException("Niepowodzenie podczas prï¿½by zapisu obrazka produktu", e);
 			}
 		}
 

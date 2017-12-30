@@ -32,7 +32,7 @@ public class Category {
 	@Id
 	@Column(name = "CATEGORY_ID", nullable = false)
 	@GeneratedValue(generator = "category_seq")
-	@SequenceGenerator(name = "category_seq", sequenceName = "CATEGORY_SEQ1", allocationSize = 1)
+	@SequenceGenerator(name = "category_seq", sequenceName = "CATEGORY_SEQ", allocationSize = 1)
 	public int getCategoryId() {
 		return categoryId;
 	}

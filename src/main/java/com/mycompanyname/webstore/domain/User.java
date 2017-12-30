@@ -40,7 +40,7 @@ public class User {
 	@Id
 	@Column(name = "USER_ID", nullable = false)
 	@GeneratedValue(generator = "userTable_seq")
-	@SequenceGenerator(name = "userTable_seq", sequenceName = "USERTABLE_SEQ", allocationSize = 1)
+	@SequenceGenerator(name = "userTable_seq", sequenceName = "USER_TABLE_SEQ", allocationSize = 1)
 	public int getUserId() {
 		return userId;
 	}

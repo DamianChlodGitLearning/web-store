@@ -42,8 +42,8 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 	}
 
 	protected void configure(HttpSecurity http) throws Exception {
-		http.authorizeRequests().antMatchers("/products/add").access("hasRole('ROLE_ADMIN')").antMatchers("/users")
-				.access("hasRole('ROLE_VENDOR')").and().formLogin().loginPage("/login")
+		http.authorizeRequests().antMatchers("/products/add").access("hasRole('ROLE_VENDOR')").antMatchers("/users")
+				.access("hasRole('ROLE_ADMIN')").and().formLogin().loginPage("/login")
 				.loginProcessingUrl("/j_spring_security_check").failureUrl("/loginfailed").permitAll()
 				.usernameParameter("j_username").passwordParameter("j_password").and().csrf().disable().logout()
 				.logoutUrl("/j_spring_security_logout").logoutSuccessUrl("/products").and().exceptionHandling()

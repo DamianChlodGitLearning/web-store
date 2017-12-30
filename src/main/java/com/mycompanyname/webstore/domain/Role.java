@@ -24,8 +24,8 @@ public class Role {
 
 	@Id
 	@Column(name = "ROLE_ID", nullable = false)
-	@GeneratedValue(generator = "usersGroupTable_seq")
-	@SequenceGenerator(name = "usersGroupTable_seq", sequenceName = "USERSGROUPTABLE_SEQ", allocationSize = 1)
+	@GeneratedValue(generator = "role_seq")
+	@SequenceGenerator(name = "role_seq", sequenceName = "ROLE_SEQ", allocationSize = 1)
 	public int getRoleId() {
 		return roleId;
 	}
