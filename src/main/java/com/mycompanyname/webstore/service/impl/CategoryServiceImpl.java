@@ -6,7 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.mycompanyname.webstore.domain.Category;
-import com.mycompanyname.webstore.domain.repository.CategoryRepository;
+import com.mycompanyname.webstore.repository.CategoryRepository;
 import com.mycompanyname.webstore.service.CategoryService;
 
 @Service

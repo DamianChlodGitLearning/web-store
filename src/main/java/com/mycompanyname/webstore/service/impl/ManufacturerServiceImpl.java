@@ -6,7 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.mycompanyname.webstore.domain.Manufacturer;
-import com.mycompanyname.webstore.domain.repository.ManufacturerRepository;
+import com.mycompanyname.webstore.repository.ManufacturerRepository;
 import com.mycompanyname.webstore.service.ManufacturerService;
 
 @Service

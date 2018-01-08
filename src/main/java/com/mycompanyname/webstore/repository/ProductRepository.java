@@ -1,4 +1,4 @@
-package com.mycompanyname.webstore.domain.repository;
+package com.mycompanyname.webstore.repository;
 
 import com.mycompanyname.webstore.domain.Product;
 import java.util.List;

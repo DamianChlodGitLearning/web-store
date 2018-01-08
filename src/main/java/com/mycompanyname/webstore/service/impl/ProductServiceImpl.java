@@ -5,7 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.mycompanyname.webstore.domain.Product;
-import com.mycompanyname.webstore.domain.repository.ProductRepository;
+import com.mycompanyname.webstore.repository.ProductRepository;
 import com.mycompanyname.webstore.service.ProductService;
 
 @Service
