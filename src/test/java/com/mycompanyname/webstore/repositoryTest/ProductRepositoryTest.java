@@ -1,8 +1,8 @@
 package com.mycompanyname.webstore.repositoryTest;
 
+import static org.assertj.core.api.Assertions.assertThat;
+
 import java.math.BigDecimal;
-import java.util.ArrayList;
-import java.util.List;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,7 +13,6 @@ import com.mycompanyname.webstore.domain.Category;
 import com.mycompanyname.webstore.domain.Manufacturer;
 import com.mycompanyname.webstore.domain.Product;
 import com.mycompanyname.webstore.repository.ProductRepository;
-import org.junit.Assert;
 
 @RunWith(SpringRunner.class)
 @DataJpaTest
@@ -26,20 +25,20 @@ public class ProductRepositoryTest {
 	private ProductRepository productRepository;
 
 	@Test
-	public void whenFindAll_thenReturnProducts() {
-		// given
+	public void should_find_all_Products() {
 		Product p1 = new Product();
 
 		Category categoryForP1 = new Category();
-		categoryForP1.setCategoryId(5);
 		categoryForP1.setName("category_1 test");
+
+		entityManager.persist(categoryForP1);
 
 		Manufacturer manufacturerForP1 = new Manufacturer();
 		manufacturerForP1 = new Manufacturer();
-		manufacturerForP1.setManufacturerId(8);
 		manufacturerForP1.setName("manufacturer_1 test");
 
-		p1.setProductId(99998);
+		entityManager.persist(manufacturerForP1);
+
 		p1.setName("name_1 test");
 		p1.setCategory(categoryForP1);
 		p1.setCondition("condition_1 test");
@@ -53,15 +52,16 @@ public class ProductRepositoryTest {
 		Product p2 = new Product();
 
 		Category categoryForP2 = new Category();
-		categoryForP2.setCategoryId(5);
 		categoryForP2.setName("category_2 test");
+
+		entityManager.persist(categoryForP2);
 
 		Manufacturer manufacturerForP2 = new Manufacturer();
 		manufacturerForP2 = new Manufacturer();
-		manufacturerForP2.setManufacturerId(8);
 		manufacturerForP2.setName("manufacturer_2 test");
 
-		p2.setProductId(59948);
+		entityManager.persist(manufacturerForP2);
+
 		p2.setName("name_2 test");
 		p2.setCategory(categoryForP2);
 		p2.setCondition("condition_2 test");
@@ -74,21 +74,10 @@ public class ProductRepositoryTest {
 
 		entityManager.persist(p1);
 		entityManager.persist(p2);
-		entityManager.flush();
 
-		List<Product> expectproductsList = new ArrayList<Product>();
-		expectproductsList.add(p1);
-		expectproductsList.add(p2);
+		Iterable<Product> products = productRepository.findAll();
 
-		// when
-		List<Product> actualProductsList = new ArrayList<Product>();
-		actualProductsList = productRepository.findAll();
-
-		System.out.println("actualProductsList" + actualProductsList + "expectproductsList" + expectproductsList);
-
-		// then
-		Assert.assertEquals(expectproductsList, actualProductsList);
-
+		assertThat(products).hasSize(2).contains(p1, p2);
 	}
 
 }
